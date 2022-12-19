@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+        <script src="rotation.js"></script>
+        <script src="fish.js"></script>
+        <script src="coin.js"></script>
+        <script src="game.js"></script>
+    </head>
+
+    <body>
+        <a-scene background="color: #026F90">
+            <a-entity id="look" look-controls camera position="0 2 3"></a-entity>
+
+            <!--Asset Management-->
+            <a-assets>
+                <a-asset-item
+                    id="islandMap"
+                    src="./island/scene.gltf"
+                ></a-asset-item>
+
+                <a-asset-item
+                    id="scuba-diver"
+                    src="./scuba_diver/scene.gltf"
+                ></a-asset-item>
+            </a-assets>
+
+            <!--Island-->
+            <a-entity
+                id="island"
+                gltf-model="#islandMap"
+                position="0 0 0"
+                scale="1 1 1"
+                animation="property: position; to: 0 0 20; easing: linear; loop: true; dur: 160000"
+                island-rotation-reader
+                swimming-fishes
+                target-coins
+            ></a-entity>
+
+            <!--Scuba Diver-->
+            <a-entity
+                id="scuba-diver-model"
+                gltf-model="#scuba-diver"
+                position="0 0 2"
+                scale="0.008 0.008 0.008"
+                rotation="0 90 0"
+                scuba-diver-rotation-reader
+                game-play
+            ></a-entity>
+        </a-scene>
+    </body>
+</html>
